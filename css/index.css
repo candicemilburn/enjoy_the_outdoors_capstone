@@ -11,3 +11,13 @@
 body { background-color: white;
 
 }
+
+#selections{
+    display: flex;
+    justify-content: center
+}
+
+#radios {
+    display: flex;
+    justify-content: center
+}
