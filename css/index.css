@@ -8,16 +8,39 @@
     
 }
 
-body { background-color: white;
-
+#nothing{
+   margin-top: 50px;
 }
 
-#selections{
+#selectors{
     display: flex;
-    justify-content: center
+    justify-content: center;
 }
 
 #radios {
     display: flex;
-    justify-content: center
+    justify-content: center;
+}
+
+html, body {
+  height: 100%;
+  body { background-color: white;
+
+  }
+  
+}
+
+#wrap {
+  min-height: 100%;
+}
+
+#main {
+  overflow: auto;
+ /* must be same height as the footer */
+}
+
+#footer {
+  position:relative;
+  margin-top: 400px;
+  clear: both;
 }

@@ -10,11 +10,62 @@ window.onload = () => {
    
     locationDropdown.addEventListener("change", locSelected);
     typeDropdown.addEventListener("change", typeSelect);
-
+    theRadioType = document.addEventListener("click", hideOrShowElement)
+    theRadioLoc = document.addEventListener("click", hideOrShowElement2)
     
+        
 }
 
+function hideOrShowElement2(event){
+    console.log(event.target.value)
+    let selectLoc = document.querySelector("selectLoc");
+
+    if (event.target.value === "radioloc"){
+        selectLoc.removeAttribute("style");
+    }else{
+        selectLoc.addAttritbute("style", "display: none");
+    }
+}
+
+function hideOrShowElement(event){
+    console.log(event.target.value)
+    let selectTyp = document.querySelector("#selectTyp");
+
+    if (event.target.value === "radiotype"){
+        selectTyp.removeAttribute("style");
+        
+}else{
+    selectTyp.addAttritbute("style", "display: none");
+}
+}
+
+//function myFunction() {
+ // let theRadio = document.getElementById("radios");
+ // if (theRadio.style.display === "none") {
+///    theRadio.style.display = "block";
+ // } else {
+ //   theRadio.style.display = "none";
+ // }
+//}     selections.setAttribute("style", "display: none")
+
+    //  }else{
+   //       selectors.setAttribute("style", "display: none")
+   //   }
+
 function locSelected(event) {
+    console.log(event.target.value)
+    let parkInfo = document.querySelector("#parkInfo")
+
+    let nothing = document.querySelector("#nothing")
+
+    if (event.target.value == 0){
+        nothing.removeAttribute("style")
+        parkInfo.setAttribute("style", "display: none")
+
+    }else{
+        parkInfo.removeAttribute("style")
+        nothing.setAttribute("style", "display: none")
+    }
 
     //get the selected information from the dropdown which is also the event.target
     let selectedState = event.target.value;
@@ -144,6 +195,19 @@ function initType(){
  })
 }
 function typeSelect(event) {
+    console.log(event.target.value)
+    let parkInfo = document.querySelector("#parkInfo")
+
+    let nothing = document.querySelector("#nothing")
+
+    if (event.target.value == 0){
+        nothing.removeAttribute("style")
+        parkInfo.setAttribute("style", "display: none")
+
+    }else{
+        parkInfo.removeAttribute("style")
+        nothing.setAttribute("style", "display: none")
+    }
 
     //get the selected information from the dropdown which is also the event.target
     let typeSelected = event.target.value;
@@ -207,7 +271,5 @@ function buildTableRow(table, picked) {
     } else {
         cell5.innerHTML = picked.Visit;
 
-
-
-    }
+   }
 }
