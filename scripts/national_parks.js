@@ -5,7 +5,6 @@ window.onload = () => {
     initLocation();
     initType();
 
-    let resetButton = document.querySelector("#aPlace");
     let locationDropdown = document.querySelector("#aPlace");
     let typeDropdown = document.querySelector("#aType");
     let theRadioType = document.querySelector("#selection")
@@ -19,18 +18,22 @@ window.onload = () => {
 
 //function to show hide the correct select/dropdown
 function hideOrShowElement(event) {
-    console.log(event.target.value)
-    let selectTyp = document.querySelector("#selectTyp");
-    //set value to radiotype so if the element clicked with this val is selected, the corresp dropdown pops up
+    let chooseLocation = document.querySelector("#aType");
+    let chooseType = document.querySelector("#aPlace");
+      
+   
     if (event.target.value === "radiotype") {
         selectTyp.removeAttribute("style");
-        selectLoc.setAttribute("style", "display: none")
-        //set value to radioloc so if the element clicked with this val is selected, the corresp dropdown pops up
+        selectLoc.setAttribute("style", "display: none");
+
+        chooseType.selectedIndex = ""; //take us back to index of 0 / choose list
+
     } if (event.target.value === "radioloc") {
         selectLoc.removeAttribute("style");  //removes the display:none style in the selectLoc ID
         selectTyp.setAttribute("style", "display: none") //set the  display:none  style in the selectTyp ID
-    }
-
+        
+        chooseLocation.selectedIndex = "";
+    }   
 }
 
 
@@ -41,6 +44,7 @@ function locSelected(event) {
     console.log(event.target.value)
     let parkInfo = document.querySelector("#parkInfo")
     let nothing = document.querySelector("#nothing")
+   
     // this if test will bring the message with ID nothing back to the div when no parkInfo is selected and vise versa
     if (event.target.value == 0) {
         nothing.removeAttribute("style")

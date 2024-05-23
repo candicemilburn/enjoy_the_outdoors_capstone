@@ -106,17 +106,17 @@ cardBody.appendChild(cardImage);
 cardBody.appendChild(cardText);
 
 let div1= document.createElement("div")
-div1.classList.add("card-footer", "bg-secondary");
+div1.classList.add("card-footer", "bg-light");
 
 div1.innerText = `Elevation : ${mountain.elevation}`;
 
 let div2= document.createElement("div")
-div2.classList.add("card-footer", "bg-secondary");
+div2.classList.add("card-footer", "bg-light");
 
 div2.innerText = `Effort : ${mountain.effort}`;
 
 let div3= document.createElement("div")
-div3.classList.add("card-footer", "bg-secondary");
+div3.classList.add("card-footer", "bg-light");
 
 div3.innerText = `Lat : ${mountain.coords.lat} Lng : ${mountain.coords.lng}`;
 
