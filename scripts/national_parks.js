@@ -10,21 +10,10 @@ window.onload = () => {
    
     locationDropdown.addEventListener("change", locSelected);
     typeDropdown.addEventListener("change", typeSelect);
-    theRadioType = document.addEventListener("click", hideOrShowElement)
-    theRadioLoc = document.addEventListener("click", hideOrShowElement2)
+    theRadioType = document.addEventListener("click", hideOrShowElement);
+    theRadioLoc = document.addEventListener("click", hideOrShowElement2);
+
     
-        
-}
-
-function hideOrShowElement2(event){
-    console.log(event.target.value)
-    let selectLoc = document.querySelector("selectLoc");
-
-    if (event.target.value === "radioloc"){
-        selectLoc.removeAttribute("style");
-    }else{
-        selectLoc.addAttritbute("style", "display: none");
-    }
 }
 
 function hideOrShowElement(event){
@@ -34,27 +23,17 @@ function hideOrShowElement(event){
     if (event.target.value === "radiotype"){
         selectTyp.removeAttribute("style");
         
-}else{
-    selectTyp.addAttritbute("style", "display: none");
+}if (event.target.value === "radioloc"){
+    selectLoc.removeAttribute("style")
 }
 }
 
-//function myFunction() {
- // let theRadio = document.getElementById("radios");
- // if (theRadio.style.display === "none") {
-///    theRadio.style.display = "block";
- // } else {
- //   theRadio.style.display = "none";
- // }
-//}     selections.setAttribute("style", "display: none")
 
-    //  }else{
-   //       selectors.setAttribute("style", "display: none")
-   //   }
 
 function locSelected(event) {
     console.log(event.target.value)
     let parkInfo = document.querySelector("#parkInfo")
+
 
     let nothing = document.querySelector("#nothing")
 

@@ -12,11 +12,14 @@
    margin-top: 50px;
 }
 
-#selectors{
+#selectTyp{
     display: flex;
     justify-content: center;
 }
-
+#selectLoc{
+    display: flex;
+    justify-content: center;
+}
 #radios {
     display: flex;
     justify-content: center;
