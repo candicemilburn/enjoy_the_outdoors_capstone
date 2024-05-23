@@ -6,18 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enjoy The Outdoors - Mountains</title>
   <!-- Bootstrap CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index.css">
+    
 </head>
 
-<body>
+<body class="mountainp">
   <div id="main">
     <div id="wrap">
   <header class="mb-3">
     <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">Enjoy The Outdoors</a>
+        <a class="navbar-brand" href="index.html">Enjoy The Outdoors!</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
           aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -33,10 +37,16 @@
     </nav>
   </header>
 
-  <h1>Mountain Information</h1>
+  <h2>Mountain Information</h2>
 
+  <div class="d-flex justify-content-center">
+    <select id="mountainInfo" class="mb-3" ></select>
+    </div>
+    
   <div id="noMountain" class="text-center "><h3>Select a Mountain to view details
   </h3></div>
+  
+  <div id="mountainCards" style="display: none;"></div>
 
 
   <div id="footer">

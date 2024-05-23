@@ -1,87 +1,86 @@
 "use strict"
 
 window.onload = () => {
-    
+
     initLocation();
     initType();
 
+    let resetButton = document.querySelector("#aPlace");
     let locationDropdown = document.querySelector("#aPlace");
     let typeDropdown = document.querySelector("#aType");
-   
+    let theRadioType = document.querySelector("#selection")
     locationDropdown.addEventListener("change", locSelected);
     typeDropdown.addEventListener("change", typeSelect);
     theRadioType = document.addEventListener("click", hideOrShowElement);
-    theRadioLoc = document.addEventListener("click", hideOrShowElement2);
 
-    
+
 }
 
-function hideOrShowElement(event){
+
+//function to show hide the correct select/dropdown
+function hideOrShowElement(event) {
     console.log(event.target.value)
     let selectTyp = document.querySelector("#selectTyp");
-
-    if (event.target.value === "radiotype"){
+    //set value to radiotype so if the element clicked with this val is selected, the corresp dropdown pops up
+    if (event.target.value === "radiotype") {
         selectTyp.removeAttribute("style");
-        
-}if (event.target.value === "radioloc"){
-    selectLoc.removeAttribute("style")
+        selectLoc.setAttribute("style", "display: none")
+        //set value to radioloc so if the element clicked with this val is selected, the corresp dropdown pops up
+    } if (event.target.value === "radioloc") {
+        selectLoc.removeAttribute("style");  //removes the display:none style in the selectLoc ID
+        selectTyp.setAttribute("style", "display: none") //set the  display:none  style in the selectTyp ID
+    }
+
 }
-}
 
 
 
+//function for  
 function locSelected(event) {
+    // this will help us switch from the table info to the message within the div
     console.log(event.target.value)
     let parkInfo = document.querySelector("#parkInfo")
-
-
     let nothing = document.querySelector("#nothing")
-
-    if (event.target.value == 0){
+    // this if test will bring the message with ID nothing back to the div when no parkInfo is selected and vise versa
+    if (event.target.value == 0) {
         nothing.removeAttribute("style")
         parkInfo.setAttribute("style", "display: none")
 
-    }else{
+    } else {
         parkInfo.removeAttribute("style")
         nothing.setAttribute("style", "display: none")
     }
 
-    //get the selected information from the dropdown which is also the event.target
+       // set dropdown info/ the event.target
     let selectedState = event.target.value;
 
-    //Here we are looping through the national park array an filtering through to get the information we need in order to match
+    //loop thru the natpark array data and filter through to get the information we need in order to match
     let matchingPlace = nationalParksArray.filter((place) => {
 
-        //returning the every single option that it goes through and choosing the 
-        //state and if it mathes the value in the selectedState then it returns it.
+        //loop thru and return options that is a state and matches calue in SelectedState 
+
         return place.State === selectedState;
 
 
     })
-    //getting a hold of the table body so we can add rows to it for all the matching state info
+    //grab table body and add rows/columns for statematch info
     let tableBody = document.querySelector("#tableResults");
-    //set the innterHTML to "" which clear it out
+    //set the innterHTML to "" to clear it out
     tableBody.innerHTML = "";
 
     matchingPlace.forEach((place) => {
-
-        //running the function with the table that we grabbed from the HTML 
-        //now the "place" is going throught the list individually
+        //run function with table body with tableBody ID from HTML the "place" paramaeter is going throught the list individually
         buildTableRow(tableBody, place);
-
-
     })
 
-    //function we are running to add the information from the nationalParkArray to the table
-    //tablebody is the html table we grabbed earlier
-    //place is a parameter that we run what we choose in it
+    //function to directly display and add data from the nationalParkArray to table 
+
     function buildTableRow(tableBody, place) {
 
-        //create the row to hold the data
+        //create the rows for all data
         let newRow = tableBody.insertRow(-1);
-
+        //innerHTML indicated text we will take from date
         let cell1 = newRow.insertCell(0);
-        //this is us displaying the text on the page that is collected from the data in JS
         cell1.innerHTML = place.LocationID
 
         let cell2 = newRow.insertCell(1);
@@ -93,25 +92,24 @@ function locSelected(event) {
         let cell4 = newRow.insertCell(3)
         cell4.innerHTML = `Phone: ${place.Phone}, Fax: ${place.Fax}`
 
-        //creating an if statement for the url section as some dont have any and I dont wanna show "undefined"
+        // have to create if statement test  for URL bc some dont have it
         let cell5 = newRow.insertCell(4)
-        if (place.Visit) {
+        if (!place.Visit) {
             cell5.innerHTML = "N/A"
         } else {
             cell5.innerHTML = place.Visit;
         }
+
     }
 
 }
-
-
 
 function initLocation() {
 
     let chooseLocation = document.querySelector("#aPlace");
     let defaultOption = document.createElement("option");
 
-    defaultOption.value = "0";
+    defaultOption.value = ""; // set to 0 index with empty 
 
     defaultOption.textContent = "Choose Park Location";
 
@@ -131,47 +129,47 @@ function initLocation() {
 
 function matchingStateName(nationalParksArray, state) {
 
-    //start by creating an empty list to hold our matches
+    //empty list to hold matches
     let theMatch = [];
-    //number of items on the info list
-    let numItems = nationalParksArray.length;
+    //number of places on the info list
+    let numPlaces = nationalParksArray.length;
 
     //loop over the state info to find matches
-    for (let i = 0; i < numItems; i++) {
+    for (let i = 0; i < numPlaces; i++) {
         if (nationalParksArray[i].State === state) {
-            //add that state to our matches array
+            // attach push that state to matches array
             theMatch.push(nationalParksArray[i]);
         }
     }
 
-    //return all the matching menu items
+    //return all the matching places
     return theMatch;
 }
 
 
 
-function initType(){
+function initType() {
 
-       let chooseType = document.querySelector("#aType");
-       let defaultOpt = document.createElement("option");
-   
-       defaultOpt.value = "0";
-   
-       defaultOpt.textContent = "Choose Park Type";
-   
-       chooseType.appendChild(defaultOpt);
-   
-       parkTypesArray.forEach((park) => {
-   
-           let newOpt = document.createElement("option");
+    let chooseType = document.querySelector("#aType");
+    let defaultOpt = document.createElement("option");
 
-           newOpt.value = park;
+    defaultOpt.value = "0"; // set to 0 so dropdown can reset
 
-           newOpt.textContent = park;
+    defaultOpt.textContent = "Choose Park Type";
 
-           chooseType.appendChild(newOpt);
-   
- })
+    chooseType.appendChild(defaultOpt);
+
+    parkTypesArray.forEach((park) => {
+
+        let newOpt = document.createElement("option");
+
+        newOpt.value = park;
+
+        newOpt.textContent = park;
+
+        chooseType.appendChild(newOpt);
+
+    })
 }
 function typeSelect(event) {
     console.log(event.target.value)
@@ -179,19 +177,19 @@ function typeSelect(event) {
 
     let nothing = document.querySelector("#nothing")
 
-    if (event.target.value == 0){
+    if (event.target.value == 0) {
         nothing.removeAttribute("style")
         parkInfo.setAttribute("style", "display: none")
 
-    }else{
+    } else {
         parkInfo.removeAttribute("style")
         nothing.setAttribute("style", "display: none")
     }
 
-    //get the selected information from the dropdown which is also the event.target
+    //function to show hide the correct select/dropdown
     let typeSelected = event.target.value;
 
-    //here we are running a function to match the park types and the national park type
+    //loop thru the natpark array data and filter through to get the information we need in order to match
     let matchingTypes = nationalParksArray.filter((type) => {
 
         //running a loop through the parktypes to get the individual strings
@@ -222,16 +220,15 @@ function typeSelect(event) {
 
     })
 }
-//function we are running to add the information from the nationalParkArray to the table
-//tablebody is the html table we grabbed earlier
-//chosen is a parameter that we run what we choose in it
+//run function with table body with tableBody ID from HTML the "picked" paramaeter is going throught the list individually
+
 function buildTableRow(table, picked) {
 
-    //create the row to hold the data
+    //create the rows for all data
     let newRow = table.insertRow(-1);
-
+    //innerHTML indicated text we will take from data
     let cell1 = newRow.insertCell(0);
-    //this is us displaying the text on the page that is collected from the data in JS
+
     cell1.innerHTML = picked.LocationID
 
     let cell2 = newRow.insertCell(1);
@@ -243,12 +240,11 @@ function buildTableRow(table, picked) {
     let cell4 = newRow.insertCell(3)
     cell4.innerHTML = `Phone: ${picked.Phone}, Fax: ${picked.Fax}`
 
-    //creating an if statement for the url section as some dont have any and I dont wanna show "undefined"
+    // have to create if statement test for URL bc some dont have it
     let cell5 = newRow.insertCell(4)
-    if (picked.Visit) {
+    if (!picked.Visit) {
         cell5.innerHTML = "N/A"
     } else {
         cell5.innerHTML = picked.Visit;
-
-   }
+    }
 }

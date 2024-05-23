@@ -4,46 +4,78 @@
     object-fit: cover;
 }
 
-#foot{ color: white;
-    
+#foot {
+    color: white;
+
 }
 
-#nothing{
-   margin-top: 50px;
+#noMountain {
+    margin-top: 40px;
 }
 
-#selectTyp{
+#nothing {
+    margin-top: 30px;
+}
+
+#selectTyp {
     display: flex;
     justify-content: center;
 }
-#selectLoc{
+
+#selectLoc {
     display: flex;
     justify-content: center;
 }
+
 #radios {
     display: flex;
     justify-content: center;
 }
 
-html, body {
-  height: 100%;
-  body { background-color: white;
-
-  }
-  
-}
-
 #wrap {
-  min-height: 100%;
+    min-height: 80%;
 }
 
 #main {
-  overflow: auto;
- /* must be same height as the footer */
+    overflow: auto;
+    /* must be same height as the footer */
 }
 
 #footer {
-  position:relative;
-  margin-top: 400px;
-  clear: both;
+    position: relative;
+    margin-top: 32%;
+    clear: both;
 }
+
+.navbar-brand {
+    font-family: "Satisfy", cursive;
+    font-weight: 400;
+    font-size: 40px;
+    font-style: normal;
+}
+
+#title {
+    font-family: "Satisfy", cursive;
+    font-weight: 400;
+    font-size: 30px;
+    font-style: normal;
+}
+
+.mountainp{
+        height: 70%;
+        background-color: rgb(36, 34, 34);
+        background-image: url(https://images.unsplash.com/photo-1518023176010-e14eb57eecf9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2hpdGUlMjBtb3VudGFpbnxlbnwwfHwwfHx8MA%3D%3D);
+        background-repeat:no-repeat;
+        background-size: cover;
+    
+}
+
+
+.natp{
+    height: 70%;
+    background-color: rgb(36, 34, 34);
+    background-image: url(https://i0.wp.com/nationalparkswitht.com/wp-content/uploads/2018/04/img_6950.jpg?fit=900%2C600&ssl=1);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
