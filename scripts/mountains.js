@@ -1,38 +1,47 @@
 "use strict"
+/*
+bootstrap card example:
 
+<div class="card">
+  <img src="PET IMAGE PATH GOES HERE" class="card-img-top" alt="ALT TEXT HERE">
+  <div class="card-body">
+    <h5 class="card-title">PET NAME HERE</h5>
+    <p class="card-text">PET DETAILS HERE</p>
+  </div>
+</div>
+*/
 
 window.onload = () => {
 
-    initMountainSelect();
+    initMountainDropDown();
 
-    let mountainSelection = document.querySelector("#mountainInfo");
+    let mountainSelect = document.querySelector("#mountainInfo");
 
-    mountainSelection.addEventListener("change", displayMountainCard)
+    mountainSelect.addEventListener("change", displayMountainCard)
 
 }
-function initMountainSelect() {
+function initMountainDropDown() {
 
-    let mountainSelection = document.querySelector("#mountainInfo");
+    let mountainSelect = document.querySelector("#mountainInfo");
 
     let defaultOption = document.createElement("option");
     defaultOption.value = "";
     defaultOption.textContent = "Select A Mountain";
-
-    mountainSelection.appendChild(defaultOption);
+    mountainSelect.appendChild(defaultOption);
 
     //write a loop to work with each individual category and build an option for it
-    mountainsArray.forEach((name) => {
+    mountainsArray.forEach((mount) => {
 
         //create the new option for the category we are on in the loop
         let newOption = document.createElement("option");
 
         //set the value for the option
-        newOption.value = name.name;
+        newOption.value = mount.name;
 
         //set what the user sees 
-        newOption.textContent = name.name;
+        newOption.textContent = mount.name;
 
-        mountainSelection.appendChild(newOption);
+        mountainSelect.appendChild(newOption);
 
 
     })
@@ -96,21 +105,28 @@ function displayMountainCard(event) {
 cardBody.appendChild(cardImage);
 cardBody.appendChild(cardText);
 
-let footer1= document.createElement("div")
-footer1.classList.add("card-footer", "bg-secondary");
+let div1= document.createElement("div")
+div1.classList.add("card-footer", "bg-secondary");
 
-footer1.innerText = `Elevation : ${mountain.elevation}`;
+div1.innerText = `Elevation : ${mountain.elevation}`;
 
-let footer2= document.createElement("div")
-footer2.classList.add("card-footer", "bg-secondary");
+let div2= document.createElement("div")
+div2.classList.add("card-footer", "bg-secondary");
 
-footer2.innerText = `Effort : ${mountain.effort}`;
+div2.innerText = `Effort : ${mountain.effort}`;
 
+let div3= document.createElement("div")
+div3.classList.add("card-footer", "bg-secondary");
+
+div3.innerText = `Lat : ${mountain.coords.lat} Lng : ${mountain.coords.lng}`;
+
+
+//ppend all this to make the card
 wholeCard.appendChild(cardHeader);
 wholeCard.appendChild(cardBody);
-wholeCard.appendChild(footer1);
-wholeCard.appendChild(footer2);
-
+wholeCard.appendChild(div1);
+wholeCard.appendChild(div2);
+wholeCard.appendChild(div3);
 mountainDiv.appendChild(wholeCard);
 
 
