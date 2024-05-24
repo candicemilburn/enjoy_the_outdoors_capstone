@@ -78,3 +78,7 @@
     background-size: cover;
 }
 
+#tableResults
+{
+    overflow:scroll;
+}
