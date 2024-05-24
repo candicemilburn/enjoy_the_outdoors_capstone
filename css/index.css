@@ -63,7 +63,7 @@
 
 .mountainp{
         height: 70%;
-        background-color: rgb(36, 34, 34);
+        background-color: rgb(33 37 41);
         background-image: url(https://images.unsplash.com/photo-1518023176010-e14eb57eecf9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2hpdGUlMjBtb3VudGFpbnxlbnwwfHwwfHx8MA%3D%3D);
         background-repeat:no-repeat;
         background-size: cover;
@@ -72,13 +72,17 @@
 
 .natp{
     height: 70%;
-    background-color: rgb(36, 34, 34);
+    background-color: rgb(33 37 41);
     background-image: url(https://i0.wp.com/nationalparkswitht.com/wp-content/uploads/2018/04/img_6950.jpg?fit=900%2C600&ssl=1);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-#tableResults
-{
-    overflow:scroll;
+.parkInfo {
+    overflow:hidden;
+    overflow-y: scroll;
+    height: 500px; 
+    scrollbar-color: rgb(33 37 41);
+    scroll-behavior: auto;
 }
+
